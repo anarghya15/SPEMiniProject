@@ -20,6 +20,17 @@ pipeline {
             }
         }
         
+        stage('Test Maven project') { 
+            steps {
+                sh 'mvn test' 
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml' 
+                }
+            }
+        }
+        
         stage('Build Docker Image') {
             steps {
                 script {
@@ -33,10 +44,21 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag calculator calculator:latest'
-                    sh 'docker push calculator'
+                    sh 'docker tag "${DOCKER_IMAGE_NAME}" anarghya15/calculatorJava:latest'
+                    sh 'docker push anarghya15/calculatorJava'
                     }
                  }
+            }
+        }
+        
+        stage('Run Ansible Playbook') {
+            steps {
+                script {
+                    ansiblePlaybook(
+                        playbook: 'deploy.yml',
+                        inventory: 'inventory'
+                     )
+                }
             }
         }
     }

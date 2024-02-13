@@ -1,0 +1,2 @@
+ansible_host=localhost ansible_user=dell ansible_ssh_pass=dell
+ansible_ssh_common_args = '-o StrictHostKeyChecking=no'
