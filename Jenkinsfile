@@ -46,7 +46,7 @@ pipeline {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
                     sh 'docker tag "${DOCKER_IMAGE_NAME}" anarghya15/calculatorjava:latest'
-                    sh 'docker push anarghya15/calculatorJava'
+                    sh 'docker push anarghya15/calculatorjava'
                     }
                  }
             }
