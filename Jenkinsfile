@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment {
-        DOCKER_IMAGE_NAME = 'calculatorJava'
+        DOCKER_IMAGE_NAME = 'calculatorjava'
         GITHUB_REPO_URL = 'https://github.com/anarghya15/SPEMiniProject.git'
     }
     
@@ -45,7 +45,7 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag "${DOCKER_IMAGE_NAME}" anarghya15/calculatorJava:latest'
+                    sh 'docker tag "${DOCKER_IMAGE_NAME}" anarghya15/calculatorjava:latest'
                     sh 'docker push anarghya15/calculatorJava'
                     }
                  }
