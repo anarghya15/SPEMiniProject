@@ -8,10 +8,10 @@ public class ScientificCalculator {
 
         do {
             System.out.println("Scientific Calculator Menu:");
-            System.out.println("1. Square root function - √x");
-            System.out.println("2. Factorial function - x!");
-            System.out.println("3. Natural logarithm (base е) - ln(x)");
-            System.out.println("4. Power function - x^b");
+            System.out.println("1. Square root");
+            System.out.println("2. Factorial");
+            System.out.println("3. Natural logarithm (base e)");
+            System.out.println("4. Power function");
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
@@ -19,22 +19,40 @@ public class ScientificCalculator {
             switch (choice) {
                 case 1:
                     System.out.print("Enter a number to find its square root: ");
-                    double sqrtNumber = scanner.nextDouble();
-                    result = squareRoot(sqrtNumber);
-                    System.out.println("Square root of " + sqrtNumber + " is: " + result);
+                    double sqrtNum = scanner.nextDouble();
+                    if(sqrtNum < 0){
+                        System.out.println("Square root of a negative number cannot be found");
+                    }
+                    else{
+                        result = squareRoot(sqrtNum);
+                        System.out.println("Square root of " + sqrtNum + " is: " + result);
+                    }                    
                     break;
+
                 case 2:
                     System.out.print("Enter a number to find its factorial: ");
-                    int factorialNumber = scanner.nextInt();
-                    result = factorial(factorialNumber);
-                    System.out.println("Factorial of " + factorialNumber + " is: " + result);
+                    int factorialNum = scanner.nextInt();
+                    if(factorialNum < 0){
+                        System.out.println("Factorial of a negative number cannot be found");
+                    }
+                    else{
+                        result = factorial(factorialNum);
+                        System.out.println("Factorial of " + factorialNum+ " is: " + result);
+                    }                    
                     break;
+                
                 case 3:
                     System.out.print("Enter a number to find its natural logarithm: ");
-                    double logNumber = scanner.nextDouble();
-                    result = naturalLog(logNumber);
-                    System.out.println("Natural logarithm of " + logNumber + " is: " + result);
+                    double logNum = scanner.nextDouble();
+                    if(logNum < 0){
+                        System.out.println("Factorial of a negative number cannot be found");
+                    }
+                    else{
+                        result = naturalLog(logNum);
+                        System.out.println("Natural logarithm of " + logNum + " is: " + result);
+                    }                    
                     break;
+
                 case 4:
                     System.out.print("Enter a base number: ");
                     double base = scanner.nextDouble();
@@ -43,6 +61,7 @@ public class ScientificCalculator {
                     result = power(base, exponent);
                     System.out.println(base + " raised to the power of " + exponent + " is: " + result);
                     break;
+
                 case 5:
                     System.out.println("Exiting...");
                     break;
@@ -61,6 +80,9 @@ public class ScientificCalculator {
     public static double factorial(int x) {
         if (x == 0)
             return 1;
+        if(x < 0){
+            throw new IllegalArgumentException("Number is negative");
+        }
         double result = 1;
         for (int i = 1; i <= x; i++) {
             result *= i;

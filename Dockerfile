@@ -7,6 +7,3 @@ WORKDIR /app
 # Copy the JAR file into the container
 COPY target/calculator-1.0-SNAPSHOT.jar /app/calculator.jar
 
-# Command to run the Java application
-CMD ["java", "-jar", "calculator.jar"]
-
