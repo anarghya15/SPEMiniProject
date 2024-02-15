@@ -32,7 +32,7 @@ pipeline {
             }
         }
         
-        stage('Build Docker Image') {
+        stage('Build the Docker Image') {
             steps {
                 script {
                     // Build Docker image
@@ -41,7 +41,7 @@ pipeline {
             }
         }
         
-        stage('Push Docker Image') {
+        stage('Push the Docker Image') {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
