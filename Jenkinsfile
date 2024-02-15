@@ -14,14 +14,14 @@ pipeline {
             }
         }
         
-        stage('Build Maven Project') {
+        stage('Build the Maven Project') {
             steps {
                 // Build the Maven project
                 sh 'mvn clean package'
             }
         }
         
-        stage('Test Maven project') { 
+        stage('Test the Maven project') { 
             steps {
                 sh 'mvn test' 
             }
