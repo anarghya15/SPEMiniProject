@@ -63,5 +63,18 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            mail subject: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      			body: """SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+                Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;""", 
+            	to: 'h.anarghya@iiitb.ac.in'
+        }
+        failure {
+            mail subject: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      			body: """FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':
+                Check console output at &QUOT;<a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a>&QUOT;""", 
+            	to: 'h.anarghya@iiitb.ac.in'
+        }
 }
 
