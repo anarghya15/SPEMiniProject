@@ -12,7 +12,8 @@ public class ScientificCalculator {
             System.out.println("2. Factorial");
             System.out.println("3. Natural logarithm (base e)");
             System.out.println("4. Power function");
-            System.out.println("5. Exit");
+            System.out.println("5. Addition");
+            System.out.println("6. Exit");
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
 
@@ -63,6 +64,15 @@ public class ScientificCalculator {
                     break;
 
                 case 5:
+                    System.out.print("Enter the first number: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    double num2 = scanner.nextDouble();
+                    result = num1+num2;
+                    System.out.println("The  sum of " + num1 + " and " + num2 + " is: " + result);
+                    break;
+
+                case 6:
                     System.out.println("Exiting...");
                     break;
                 default:
